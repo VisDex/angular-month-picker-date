@@ -222,7 +222,7 @@ export class MonthpickerComponent implements OnInit {
   }
 
   private isMonthYearDisabled(monthIndex: number, year: number){
-    return this.isDisabled(monthIndex) || this.isDisabled(year);
+    return this.isDisabled(monthIndex) || this.isDisabledYear(year);
   }
 }
 
