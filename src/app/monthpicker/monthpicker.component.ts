@@ -61,7 +61,7 @@ export class MonthpickerComponent implements OnInit {
         this.model.selectedMonthIndex,
         this.model.selectedMonthYear
       );
-      this.showMonthYear(monthIndex, year);
+      this.onChange(monthIndex, year);
     }
   }
 
@@ -71,7 +71,7 @@ export class MonthpickerComponent implements OnInit {
         this.model.selectedMonthIndex,
         this.model.selectedMonthYear
       );
-      this.showMonthYear(monthIndex, year);
+      this.onChange(monthIndex, year);
     }
   }
 
@@ -182,7 +182,7 @@ export class MonthpickerComponent implements OnInit {
         this.model.selectedYearDate.setMonth(monthIndex);
         this.model.selectedYearDate.setFullYear(year);
         [monthIndex, year] = this.model.updateMonthYearChanges();
-        this.showMonthYear(monthIndex, year);
+        this.onChange(monthIndex, year);
       }
     }
   }
