@@ -6,7 +6,7 @@
 	></monthpicker>
 
 	<h3 class="mt-4">Enabled Months</h3>
-	<monthpicker (change)="onChange($event)" [enabledMonths]="[9,10,11]"></monthpicker>
+	<monthpicker (change)="onChange($event)" [disabledMonths]="[9,10,11]"></monthpicker>
 
 	<h3 class="mt-4">Disabled Months</h3>
 	<monthpicker (change)="onChange($event)" [disabledMonths]="[2,5,8, 11]"></monthpicker>
@@ -18,7 +18,7 @@
 	<monthpicker (change)="onChange($event)" [locale]="'en'"></monthpicker>
 
 	<h3 class="mt-4">Enabled Years</h3>
-	<monthpicker (change)="onChange($event)" [enabledYears]="[1997, 2001,2048, 2082]"></monthpicker>
+	<monthpicker (change)="onChange($event)" [disabledYears]="[1997, 2001,2048, 2082]"></monthpicker>
 
 	<h3 class="mt-4">Disabled Years</h3>
 	<monthpicker (change)="onChange($event)" [disabledYears]="[1967, 1995, 2016, 2073]"></monthpicker>

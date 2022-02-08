@@ -18,6 +18,6 @@ export class AppComponent {
     this.selectedMonthIndex = event.monthIndex;
     this.selectedMonthAsText = moment().month(event.monthIndex).format('MMMM');
 
-    // console.warn(this.selectedYearAsText, this.selectedMonthAsText, `(month index: ${this.selectedMonthIndex})`);
+    console.warn(this.selectedYearAsText, this.selectedMonthAsText, `(month index: ${this.selectedMonthIndex})`);
   }
 }
