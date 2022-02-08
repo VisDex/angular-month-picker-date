@@ -34,20 +34,6 @@ export class MonthpickerComponent implements OnInit {
   validFormat: boolean;
   yearInRange: boolean;
 
-  onTextChange(){
-    if(this.renderOption === 'input' && this.inputText){
-      this.matchesMonthAndYear(this.inputText);
-      if(this.validFormat && this.yearInRange){
-        let monthIndex = (+this.inputText.split('/')[0])-1;
-        let year = +this.inputText.split('/')[1];
-        this.model.selectedYearDate.setMonth(monthIndex);
-        this.model.selectedYearDate.setFullYear(year);
-        [monthIndex, year] = this.model.updateMonthYearChanges();
-        this.showMonthYear(monthIndex, year);
-      }
-    }
-  }
-
   ngOnInit() {
     this.model = new MonthPickerModel();
     this.yearRanges = this.model.generateYearsBetween(
@@ -70,19 +56,35 @@ export class MonthpickerComponent implements OnInit {
   }
 
   decrementMonth() {
-    const [monthIndex, year] = this.model.decrementMonth(
-      this.model.selectedMonthIndex,
-      this.model.selectedMonthYear
-    );
-    this.showMonthYear(monthIndex, year);
+    if(this.model.selectedYearDate.getFullYear() > this.yearRanges[0]){
+      const [monthIndex, year] = this.model.decrementMonth(
+        this.model.selectedMonthIndex,
+        this.model.selectedMonthYear
+      );
+      this.showMonthYear(monthIndex, year);
+    }
   }
 
   incrementMonth() {
-    const [monthIndex, year] = this.model.incrementMonth(
-      this.model.selectedMonthIndex,
-      this.model.selectedMonthYear
-    );
-    this.showMonthYear(monthIndex, year);
+    if(this.model.selectedYearDate.getFullYear() < this.yearRanges[this.yearRanges.length - 1]){
+      const [monthIndex, year] = this.model.incrementMonth(
+        this.model.selectedMonthIndex,
+        this.model.selectedMonthYear
+      );
+      this.showMonthYear(monthIndex, year);
+    }
+  }
+
+  decrementYear(){
+    if(this.model.selectedYearDate.getFullYear() > this.yearRanges[0]){
+      this.model.decrementYear();
+    }
+  }
+
+  incrementYear(){
+    if(this.model.selectedYearDate.getFullYear() < this.yearRanges[this.yearRanges.length - 1]){
+      this.model.incrementYear();
+    }
   }
 
   selectMonth(index: number) {
@@ -171,6 +173,20 @@ export class MonthpickerComponent implements OnInit {
     return disabled;
   }
 
+  onMonthYearInput(){
+    if(this.renderOption === 'input' && this.inputText){
+      this.matchesMonthAndYear(this.inputText);
+      if(this.validFormat && this.yearInRange){
+        let monthIndex = (+this.inputText.split('/')[0])-1;
+        let year = +this.inputText.split('/')[1];
+        this.model.selectedYearDate.setMonth(monthIndex);
+        this.model.selectedYearDate.setFullYear(year);
+        [monthIndex, year] = this.model.updateMonthYearChanges();
+        this.showMonthYear(monthIndex, year);
+      }
+    }
+  }
+
   private showMonthYear(monthIndex: number, year: number) {
     this.selectedYearAsText = year.toString();
     this.selectedMonthAsText = this.model.months[monthIndex];
@@ -210,7 +226,7 @@ export class MonthPickerModel {
       'October',
       'November',
       'December'
-    ]
+    ];
 
     this.selectedMonthIndex = this.selectedMonthDate.getMonth();
     this.selectedMonthYear = this.selectedYearDate.getFullYear();
