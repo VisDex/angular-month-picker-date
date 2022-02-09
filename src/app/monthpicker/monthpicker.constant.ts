@@ -22,4 +22,4 @@ export const MONTHS = [
   'December',
 ];
 
-export const VALIDATION = /((0[1-9]|1[0-2])\/[12]\d{3})/;
+export const REGEX_MMYYYY = /((0[1-9]|1[0-2])\/[12]\d{3})/;
