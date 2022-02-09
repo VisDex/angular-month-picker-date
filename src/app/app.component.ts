@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-
-import moment from 'moment';
-import 'moment/locale/de';
+import { MONTHS } from './monthpicker/monthpicker.constant';
 
 @Component({
   selector: 'my-app',
@@ -12,11 +10,12 @@ export class AppComponent {
   selectedYearAsText: string;
   selectedMonthIndex: number;
   selectedMonthAsText: string;
+  months = MONTHS;
 
   onChange(event: { monthIndex: number, year: number }) {
     this.selectedYearAsText = event.year.toString();
     this.selectedMonthIndex = event.monthIndex;
-    this.selectedMonthAsText = moment().month(event.monthIndex).format('MMMM');
+    this.selectedMonthAsText = this.months[event.monthIndex];
 
     console.warn(this.selectedYearAsText, this.selectedMonthAsText, `(month index: ${this.selectedMonthIndex})`);
   }
