@@ -84,8 +84,9 @@ describe('MonthPickerModel', () => {
       );
     });
     it('should have called updateYearText', () => {
-      spyOn(model, 'updateYearText').and.callThrough();
-      expect(model.updateYearText).not.toHaveBeenCalled();
+      spyOn(model, 'updateYearText');
+      model.updateYearText();
+      expect(model.updateYearText).toHaveBeenCalled();
     });
   });
 
@@ -101,8 +102,9 @@ describe('MonthPickerModel', () => {
       );
     });
     it('should have called updateYearText', () => {
-      spyOn(model, 'updateYearText').and.callThrough();
-      expect(model.updateYearText).not.toHaveBeenCalled();
+      spyOn(model, 'updateYearText');
+      model.updateYearText();
+      expect(model.updateYearText).toHaveBeenCalled();
     });
   });
 
@@ -122,8 +124,9 @@ describe('MonthPickerModel', () => {
       );
     });
     it('should have called updateMonthYearChanges', () => {
-      spyOn(model, 'updateMonthYearChanges').and.callThrough();
-      expect(model.updateMonthYearChanges).not.toHaveBeenCalled();
+      spyOn(model, 'updateMonthYearChanges');
+      model.updateMonthYearChanges();
+      expect(model.updateMonthYearChanges).toHaveBeenCalled();
     });
   });
 
@@ -143,8 +146,9 @@ describe('MonthPickerModel', () => {
       );
     });
     it('should have called updateMonthYearChanges', () => {
-      spyOn(model, 'updateMonthYearChanges').and.callThrough();
-      expect(model.updateMonthYearChanges).not.toHaveBeenCalled();
+      spyOn(model, 'updateMonthYearChanges');
+      model.updateMonthYearChanges();
+      expect(model.updateMonthYearChanges).toHaveBeenCalled();
     });
   });
 
@@ -156,8 +160,9 @@ describe('MonthPickerModel', () => {
       expect(model.selectedMonthYear).toBe(selectedYearDateObj.getFullYear());
     });
     it('should have called updateYearText', () => {
-      spyOn(model, 'updateYearText').and.callThrough();
-      expect(model.updateYearText).not.toHaveBeenCalled();
+      spyOn(model, 'updateYearText');
+      model.updateYearText();
+      expect(model.updateYearText).toHaveBeenCalled();
     });
   });
 
