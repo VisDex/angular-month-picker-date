@@ -42,12 +42,13 @@ export class MonthpickerComponent implements OnInit {
 
   ngOnInit() {
     this.model = new MonthPickerModel();
-    this.yearRanges = this.model.generateYearsBetween(
+    this.yearRanges = this.model.generateYears(
       this.startYear,
       this.endYear
     );
 
-    if (this.year) {
+    if (this.year >= this.yearRanges[0] &&
+      this.year <= this.yearRanges[this.yearRanges.length - 1]) {
       this.model.selectedYearDate.setFullYear(this.year);
       this.model.updateYearText();
     }
@@ -303,7 +304,7 @@ export class MonthPickerModel {
     return [this.selectedMonthIndex, this.selectedMonthYear];
   }
 
-  generateYearsBetween(startYear, endYear): Array<number> {
+  generateYears(startYear, endYear): Array<number> {
     const currentYear = new Date().getFullYear();
     startYear = startYear || currentYear - 100;
     endYear = endYear || currentYear + 100;
