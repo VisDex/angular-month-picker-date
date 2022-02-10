@@ -18,7 +18,7 @@ import { NUMERIC_VALUES, REGEX_MMYYYY } from './monthpicker.constant';
 @Component({
   selector: 'cs-month-picker',
   templateUrl: './monthpicker.component.html',
-  styleUrls: ['./monthpicker.component.css'],
+  styleUrls: ['./monthpicker.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
